@@ -1,0 +1,32 @@
+/* src/components/BudgetSummary.css */
+.budget-summary {
+  display: flex;
+  gap: 1.25rem;
+  padding:  0 5rem;
+  justify-content: space-between;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  width: 386.67px;
+  text-align: center;
+}
+
+.card.total {
+  background: #f2f3ff;
+}
+
+.card p {
+  font-size: 1.5rem;
+  color: #B5B5B5;
+  margin-bottom: 0.5rem;
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  color: #111;
+  margin: 0;
+}

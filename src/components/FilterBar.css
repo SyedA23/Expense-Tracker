@@ -1,0 +1,83 @@
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: #f5F5F5;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding-left: 8px;
+  font-size: 14px;
+}
+
+.search-icon {
+  color: #B5B5B5;
+}
+
+/* Category Buttons */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.category-button:hover {
+  background-color: #e0e0e0;
+}
+
+.category-button.active {
+  background-color: #5C6AFF;
+  color: #FFFFFF;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.budget-button,.expense-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #5C6AFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+
+/* .action-button:hover {
+  background-color: #5C6AFF;
+} */

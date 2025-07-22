@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arimo", sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+   border-bottom: 1px solid #555555;
+}
+
+header,main {
+  padding: 30px 80px;
+ 
+ 
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+}
+h2{
+  font-weight: 700;
+  font-size: 48px;
+}
