@@ -6,6 +6,7 @@ import SummaryCard from "./components/SummaryCard";
 import FilterBar from "./components/FilterBar";
 import AddExpenseModal from "./components/AddExpenseModal";
 import ExpenseCharts from "./components/ExpenseCharts";
+import AddBudgetModal from "./components/AddBudgetModal";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <SummaryCard />
       <div style={{ padding: "2rem" }}>
         <FilterBar />
+        <AddBudgetModal />
         <AddExpenseModal />
         <ExpenseCharts />
       </div>
