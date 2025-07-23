@@ -1,6 +1,7 @@
 // src/components/FilterBar.jsx
 import React, { useState } from "react";
 import AddExpenseModal from "./AddExpenseModal";
+import AddBudgetModal from "./AddBudgetModal";
 import "./FilterBar.css";
 import {
   FaSearch,
@@ -22,9 +23,12 @@ const categories = [
 
 const FilterBar = () => {
   const [showModal, setShowModal] = useState(false);
+  const [budgetModal,setBudgetModal] = useState(false);
 
   const handleOpen = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+  const budgetOpen = () => setBudgetModal(true);
+   const budgetClose = () => setBudgetModal(false);
   return (
     <div className="filter-bar">
       {/* Search Box */}
@@ -44,25 +48,19 @@ const FilterBar = () => {
             <span>{label}</span>
           </button>
         ))}
-      </div>
-
-      {/* Action Buttons */}
-      <div className="action-buttons">
-        <button className="budget-button">
-          <FaPlus /> Add Budget
-        </button>
-        <button className="expense-button">
-          <FaPlus /> Add Expense
-        </button>
-      </div>
-      <div className="filter-bar">
-        {/* Expense Button triggers modal */}
-        <button className="expense-button" onClick={handleOpen}>
-          + Expense
-        </button>
+        {/* Action Buttons */}
+        <div className="action-buttons">
+          <button className="budget-button" onClick={budgetOpen}>
+            <FaPlus /> Add Budget
+          </button>
+          <button className="expense-button" onClick={handleOpen}>
+            <FaPlus /> Add Expense
+          </button>
+        </div>
       </div>
 
       {/* Modal Component */}
+      <AddBudgetModal budgetModal={budgetModal} budgetClose={budgetClose} />
       <AddExpenseModal showModal={showModal} handleClose={handleClose} />
     </div>
   );
