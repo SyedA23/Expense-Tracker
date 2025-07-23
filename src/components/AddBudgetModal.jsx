@@ -1,15 +1,27 @@
-// components/AddBudgetModal.jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./AddBudgetModal.css";
 
-const AddBudgetModal = ({ budgetModal, budgetClose }) => {
+const AddBudgetModal = ({ budgetModal, budgetClose, onAddBudget }) => {
+  const [amount, setAmount] = useState("");
+
   if (!budgetModal) return null;
-return (
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!amount) return;
+    onAddBudget({ amount: parseFloat(amount) });
+    setAmount("");
+    budgetClose();
+  };
+
+  return (
     <div className="modal-overlay">
       <div className="modal">
         <div className="modal-header">
           <h2>Add Budget</h2>
-          <button onClick={budgetClose}>&times;</button>
+          <button onClick={budgetClose} className="close-btn">
+            &times;
+          </button>
         </div>
         <form onSubmit={handleSubmit} className="modal-body">
           <label>
@@ -30,8 +42,5 @@ return (
     </div>
   );
 };
-
-  
-
 
 export default AddBudgetModal;
