@@ -1,0 +1,52 @@
+.expense-table-wrapper {
+  padding: 1rem;
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.expense-table thead {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+.edit-btn {
+  background-color: #f2f3ff;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.delete-btn {
+  background-color: #ffe1e1;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.edit-btn:hover {
+  background-color: #d6dbff;
+}
+
+.delete-btn:hover {
+  background-color: #ffbaba;
+}
