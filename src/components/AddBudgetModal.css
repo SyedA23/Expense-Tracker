@@ -44,8 +44,10 @@
 }
 .submit-btn {
   background: #5c6ef8;
-  color: white;
-  font-weight: bold;
+  color: #ffffff;
+  font-family: "Arimo";
+  font-weight: 700;
+  text-align: left;
   border: none;
   padding: 0.8rem 1.2rem;
   border-radius: 12px;
