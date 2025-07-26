@@ -1,0 +1,85 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+  font-family: "Lato";
+  font-style: heavy;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1c1c1e;
+}
+
+.close-button {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.modal-form input,
+.modal-form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-expense-btn {
+  background-color: #5c6aff;
+  color: #fff;
+  font-family: "Arimo";
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
+.open-modal-button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
