@@ -25,5 +25,4 @@ const SummaryCard = ({ totalBudget, totalExpense }) => {
     </div>
   );
 };
-
 export default SummaryCard;
