@@ -1,25 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddBudgetModal.css";
 
-const AddBudgetModal = ({ budgetModal, budgetClose, onAddBudget }) => {
+const AddBudgetModal = ({ onClose, onAddBudget }) => {
   const [amount, setAmount] = useState("");
 
-  if (!budgetModal) return null;
+  // Optional: Close modal on pressing Escape
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [onClose]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!amount) return;
-    onAddBudget({ amount: parseFloat(amount) });
-    setAmount("");
-    budgetClose();
+    const parsedAmount = parseFloat(amount);
+    if (!amount || isNaN(parsedAmount) || parsedAmount <= 0) return;
+
+    onAddBudget({ amount: parsedAmount });
+    setAmount(""); // Reset input
+    onClose(); // Close modal
+  };
+
+  const handleOverlayClick = (e) => {
+    if (e.target.className === "modal-overlay") {
+      onClose(); // Clicking outside modal closes it
+    }
   };
 
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal">
         <div className="modal-header">
           <h2>Add Budget</h2>
-          <button onClick={budgetClose} className="close-btn">
+          <button onClick={onClose} className="close-btn">
             &times;
           </button>
         </div>
@@ -29,6 +46,7 @@ const AddBudgetModal = ({ budgetModal, budgetClose, onAddBudget }) => {
           </label>
           <input
             type="number"
+            min="1"
             placeholder="Enter Amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
