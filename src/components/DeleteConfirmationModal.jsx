@@ -1,14 +1,17 @@
 import React from "react";
 import "./DeleteConfirmationModal.css";
 
-const DeleteConfirmationModal = ({ show, onCancel, onConfirm }) => {
-  if (!show) return null;
+const DeleteConfirmationModal = ({ showModal, onCancel, onConfirm }) => {
+  if (!showModal) return null;
 
   return (
     <div className="modal-overlay">
       <div className="modal-box">
-        <h2>Are you sure?</h2>
-        <p>This action cannot be undone.</p>
+        <div className="modal-icon">
+          <span className="icon-white">!</span>
+        </div>
+        <h2 className="modal-title">Are you sure</h2>
+        <p className="modal-text">You won’t be able to revert this!</p>
         <div className="modal-buttons">
           <button className="btn cancel" onClick={onCancel}>
             Cancel
