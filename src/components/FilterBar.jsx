@@ -1,7 +1,4 @@
 import React from "react";
-import AddExpenseModal from "./AddExpenseModal";
-import AddBudgetModal from "./AddBudgetModal";
-import "./FilterBar.css";
 import {
   FaSearch,
   FaPlus,
@@ -11,6 +8,7 @@ import {
   FaHeartbeat,
   FaWallet
 } from "react-icons/fa";
+import "./FilterBar.css";
 
 const categories = [
   { icon: <FaWallet />, label: "All Expenses", active: true },
@@ -20,24 +18,14 @@ const categories = [
   { icon: <FaHeartbeat />, label: "Health" }
 ];
 
-const FilterBar = ({
-  onOpenBudgetModal,
-  onCloseBudgetModal,
-  showBudgetModal,
-  handleAddBudget,
-  onOpenExpenseModal,
-  onCloseExpenseModal,
-  showExpenseModal
-}) => {
+const FilterBar = ({ onAddBudgetClick, onAddExpenseClick }) => {
   return (
     <div className="filter-bar">
-      {/* Search Box */}
       <div className="search-box">
         <FaSearch className="search-icon" />
         <input type="text" placeholder="Search" />
       </div>
 
-      {/* Category Buttons */}
       <div className="category-buttons">
         {categories.map(({ icon, label, active }) => (
           <button
@@ -50,12 +38,11 @@ const FilterBar = ({
         ))}
       </div>
 
-      {/* Action Buttons */}
       <div className="action-buttons">
-        <button className="budget-button" onClick={onOpenBudgetModal}>
+        <button className="budget-button" onClick={onAddBudgetClick}>
           <FaPlus /> Add Budget
         </button>
-        <button className="expense-button" onClick={onOpenExpenseModal}>
+        <button className="expense-button" onClick={onAddExpenseClick}>
           <FaPlus /> Add Expense
         </button>
       </div>
