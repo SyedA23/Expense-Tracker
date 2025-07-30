@@ -1,54 +1,76 @@
-import React, { useState } from 'react';
-import './ExpenseList.css';
+import React from "react";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import "./ExpenseList.css";
 
-const ExpenseList = () => {
-  const [expenses, setExpenses] = useState([
-    { id: 1, name: 'Expense on pizza', amount: 499.00 },
-    { id: 2, name: 'Expense on pizza', amount: 499.00 },
-    { id: 3, name: 'Expense on pizza', amount: 499.00 },
-    { id: 4, name: 'Expense on pizza', amount: 499.00 },
-    { id: 5, name: 'Expense on pizza', amount: 499.00 }
-  ]);
+const ExpenseList = ({ expenses = [], onDeleteExpense, onEditExpense }) => {
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+  const [selectedExpenseId, setSelectedExpenseId] = React.useState(null);
 
-  const handleEdit = (id) => {
-    console.log("Edit", id);
-    // Logic to open edit modal or inline edit
+  const handleDeleteClick = (id) => {
+    setSelectedExpenseId(id);
+    setShowDeleteModal(true);
   };
 
-  const handleDelete = (id) => {
-    const updated = expenses.filter(expense => expense.id !== id);
-    setExpenses(updated);
+  const handleConfirmDelete = () => {
+    onDeleteExpense(selectedExpenseId);
+    setShowDeleteModal(false);
+    setSelectedExpenseId(null);
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false);
+    setSelectedExpenseId(null);
   };
 
   return (
     <div className="expense-table-wrapper">
-      <table className="expense-table">
-        <thead>
-          <tr>
-            <th>Sr.</th>
-            <th>Expense</th>
-            <th>Amount</th>
-            <th>Edit / Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {expenses.map((expense, index) => (
-            <tr key={expense.id}>
-              <td>{index + 1}</td>
-              <td>{expense.name}</td>
-              <td>₹ {expense.amount.toFixed(2)}</td>
-              <td>
-                <button className="edit-btn" onClick={() => handleEdit(expense.id)}>
-                  ✏️ Edit
-                </button>
-                <button className="delete-btn" onClick={() => handleDelete(expense.id)}>
-                  🗑️ Delete
-                </button>
-              </td>
+      {expenses.length === 0 ? (
+        <p className="no-expenses">
+          No expenses added yet. Add your first expense!
+        </p>
+      ) : (
+        <table className="expense-table">
+          <thead>
+            <tr>
+              <th>Sr.</th>
+              <th>Expense</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {expenses.map((expense, index) => (
+              <tr key={expense.id}>
+                <td>{index + 1}</td>
+                <td>{expense.name}</td>
+                <td>₹{expense.amount.toLocaleString("en-IN")}</td>
+                <td>{new Date(expense.date).toLocaleDateString()}</td>
+                <td className="action-buttons">
+                  <button
+                    className="edit-btn"
+                    onClick={() => onEditExpense(expense.id)}
+                  >
+                    ✏️ Edit
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDeleteClick(expense.id)}
+                  >
+                    🗑️ Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      <DeleteConfirmationModal
+        showModal={showDeleteModal}
+        onCancel={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 };
