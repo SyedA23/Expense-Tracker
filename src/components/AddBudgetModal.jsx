@@ -20,7 +20,7 @@ const AddBudgetModal = ({ onClose, onAddBudget }) => {
     const parsedAmount = parseFloat(amount);
     if (!amount || isNaN(parsedAmount) || parsedAmount <= 0) return;
 
-    onAddBudget({ amount: parsedAmount });
+    onAddBudget(parsedAmount);
     setAmount(""); // Reset input
     onClose(); // Close modal
   };
