@@ -108,9 +108,9 @@ const AddExpenseModal = ({ showModal, handleClose, onAddExpense }) => {
               required
             >
               <option value="">Choose a Category</option>
-              <option value="Food">Food & Drink</option>
+              <option value="Food & Drinks">Food & Drinks</option>
               <option value="Travel">Travel</option>
-              <option value="Utilities">Groceries</option>
+              <option value="Groceries">Groceries</option>
               <option value="Health">Health</option>
             </select>
           </label>
