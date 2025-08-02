@@ -14,13 +14,23 @@ function App() {
   const [totalBudget, setTotalBudget] = useState(0);
   const [editingExpense, setEditingExpense] = useState(null);
   const [expenses, setExpenses] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All Expenses");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const savedExpenses = localStorage.getItem("expenses");
+    const savedBudget = localStorage.getItem("budget");
     if (savedExpenses) {
       setExpenses(JSON.parse(savedExpenses));
     }
+    if (savedBudget) {
+      setTotalBudget(Number(savedBudget));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("budget", totalBudget.toString());
+  }, [totalBudget]);
 
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
@@ -31,6 +41,18 @@ function App() {
     setTotalBudget(budgetAmount);
     setShowBudgetModal(false);
   };
+
+  const filteredExpenses = expenses.filter((expense) => {
+    const matchesCategory =
+      selectedCategory === "All Expenses" ||
+      expense.category.toLowerCase() === selectedCategory.toLowerCase();
+
+    const matchesSearch = expense.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
 
   const handleAddExpense = (newExpense) => {
     const expenseWithId = {
@@ -83,6 +105,10 @@ function App() {
         <FilterBar
           onAddBudgetClick={() => setShowBudgetModal(true)}
           onAddExpenseClick={() => setShowExpenseModal(true)}
+          selectedCategory={selectedCategory}
+          onCategorySelect={setSelectedCategory}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
         />
 
         {/* Budget Modal */}
@@ -113,7 +139,7 @@ function App() {
 
         <ExpenseCharts expenses={expenses} />
         <ExpenseList
-          expenses={expenses}
+          expenses={filteredExpenses}
           onDeleteExpense={handleDeleteExpense}
           onEditExpense={handleEditExpense}
         />
