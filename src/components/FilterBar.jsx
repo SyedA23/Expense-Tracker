@@ -11,26 +11,41 @@ import {
 import "./FilterBar.css";
 
 const categories = [
-  { icon: <FaWallet />, label: "All Expenses", active: true },
+  { icon: <FaWallet />, label: "All Expenses" },
   { icon: <FaPizzaSlice />, label: "Food & Drinks" },
   { icon: <FaShoppingBag />, label: "Groceries" },
   { icon: <FaSuitcase />, label: "Travel" },
   { icon: <FaHeartbeat />, label: "Health" }
 ];
 
-const FilterBar = ({ onAddBudgetClick, onAddExpenseClick }) => {
+const FilterBar = ({
+  onAddBudgetClick,
+  onAddExpenseClick,
+  selectedCategory,
+  onCategorySelect,
+  searchQuery,
+  onSearchChange
+}) => {
   return (
     <div className="filter-bar">
       <div className="search-box">
         <FaSearch className="search-icon" />
-        <input type="text" placeholder="Search" />
+        <input
+          type="text"
+          placeholder="Search expenses..."
+          value={searchQuery}
+          onChange={(e) => onSearchChange(e.target.value)}
+        />
       </div>
 
       <div className="category-buttons">
-        {categories.map(({ icon, label, active }) => (
+        {categories.map(({ icon, label }) => (
           <button
             key={label}
-            className={`category-button ${active ? "active" : ""}`}
+            className={`category-button ${
+              label === selectedCategory ? "active" : ""
+            }`}
+            onClick={() => onCategorySelect(label)}
           >
             {icon}
             <span>{label}</span>
