@@ -27,13 +27,12 @@
   margin-bottom: 1rem;
 }
 
-.modal-header h2{
+.modal-header h2 {
   font-family: "Lato";
   font-style: heavy;
   font-size: 24px;
   font-weight: 800;
-  color: #1C1C1E;
-
+  color: #1c1c1e;
 }
 
 .close-button {
@@ -57,7 +56,7 @@
 }
 
 .add-expense-btn {
-  background-color: #5C6AFF;
+  background-color: #5c6aff;
   color: #fff;
   font-family: "Arimo";
   font-weight: 700;
