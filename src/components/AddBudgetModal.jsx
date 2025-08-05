@@ -4,7 +4,7 @@ import "./AddBudgetModal.css";
 const AddBudgetModal = ({ onClose, onAddBudget }) => {
   const [amount, setAmount] = useState("");
 
-  // Optional: Close modal on pressing Escape
+
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -21,13 +21,13 @@ const AddBudgetModal = ({ onClose, onAddBudget }) => {
     if (!amount || isNaN(parsedAmount) || parsedAmount <= 0) return;
 
     onAddBudget(parsedAmount);
-    setAmount(""); // Reset input
-    onClose(); // Close modal
+    setAmount("");
+    onClose(); 
   };
 
   const handleOverlayClick = (e) => {
     if (e.target.className === "modal-overlay") {
-      onClose(); // Clicking outside modal closes it
+      onClose();
     }
   };
 
