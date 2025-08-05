@@ -9,7 +9,7 @@ const EditExpenseModal = ({ expense, showModal, onClose, onUpdate }) => {
     amount: ""
   });
 
-  // Initialize form with expense data when modal opens or expense changes
+  
   useEffect(() => {
     if (expense) {
       setFormData({
@@ -32,13 +32,13 @@ const EditExpenseModal = ({ expense, showModal, onClose, onUpdate }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic validation
+    
     if (!formData.name || !formData.date || !formData.amount) {
       alert("Please fill all required fields");
       return;
     }
 
-    // Prepare updated expense object
+  
     const updatedExpense = {
       ...expense,
       ...formData,
