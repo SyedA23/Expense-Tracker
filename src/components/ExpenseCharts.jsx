@@ -159,9 +159,16 @@ const ExpenseCharts = ({ expenses }) => {
               horizontal={false}
             />
             <Tooltip
-              formatter={(value) => [`$${value.toFixed(2)}`, "Amount"]}
+              formatter={(value) => [
+                new Intl.NumberFormat("en-IN", {
+                  style: "currency",
+                  currency: "INR"
+                }).format(value),
+                "Amount"
+              ]}
               labelFormatter={(label) => `Month: ${label}`}
             />
+
             <Bar
               dataKey="value"
               fill="#375CFF"
