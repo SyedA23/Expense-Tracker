@@ -38,7 +38,7 @@ function App() {
 
   const handleAddBudget = (amount) => {
     const budgetAmount = Number(amount) || 0;
-    setTotalBudget(budgetAmount);
+    setTotalBudget((prevBudget) => prevBudget + budgetAmount);
     setShowBudgetModal(false);
   };
 
