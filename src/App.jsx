@@ -57,8 +57,8 @@ function App() {
   const handleAddExpense = (newExpense) => {
     const expenseWithId = {
       ...newExpense,
-      id: Date.now(), // Dynamic ID generation
-      date: newExpense.date || new Date().toISOString() // Ensure date exists
+      id: Date.now(),
+      date: newExpense.date || new Date().toISOString()
     };
     setExpenses((prev) => [...prev, expenseWithId]);
     setShowExpenseModal(false);
@@ -125,6 +125,8 @@ function App() {
             showModal={showExpenseModal}
             handleClose={() => setShowExpenseModal(false)}
             onAddExpense={handleAddExpense}
+            budget={totalBudget}
+            expenses={expenses}
           />
         )}
 
