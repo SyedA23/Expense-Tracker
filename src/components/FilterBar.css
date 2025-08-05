@@ -7,7 +7,7 @@
   border-radius: 10px;
 }
 
-/* Search Box */
+
 .search-box {
   border: 2px solid #b5b5b5;
   display: flex;
@@ -28,7 +28,7 @@
   color: #b5b5b5;
 }
 
-/* Category Buttons */
+
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
